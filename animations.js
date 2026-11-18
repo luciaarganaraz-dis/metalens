@@ -64,6 +64,13 @@
     [l, r].forEach(el => el.style.removeProperty('transition'));
   }
 
+  /* Hover: los textos de links y botones se duplican para poder "rodar" (ver HOVERS en styles.css) */
+  $$('.nav__links a, .col a:not(.col__aerolab), .btn').forEach(el => {
+    const t = el.textContent.trim();
+    if (!t || el.children.length) return;
+    el.innerHTML = `<span class="roll" data-t="${t}"><span>${t}</span></span>`;
+  });
+
   /* ── 2. Intro: palabras que se encienden con el scroll ── */
   const intro = $('.intro__text');
   intro.querySelectorAll(':scope > span').forEach(group => {
