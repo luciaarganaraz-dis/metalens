@@ -84,6 +84,7 @@
     const io = new IntersectionObserver(reveal, { rootMargin: '0px 0px -12% 0px' });
     const ioEdge = new IntersectionObserver(reveal, { rootMargin: '0px' });   // lo que vive pegado al fondo de la página
     $$('[data-reveal]').forEach(el => (el.matches('.demo__logo-mask') ? ioEdge : io).observe(el));
+    $$('.price-card').forEach(el => io.observe(el));
   }
 
   /* Hero arranca al cargar las fuentes */

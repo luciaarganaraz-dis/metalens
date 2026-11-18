@@ -302,6 +302,18 @@ section, header, footer { position: relative; width: calc(1440 * var(--u)); marg
 /* intro: palabras */
 .intro__text .w { transition: opacity .25s linear; }
 
+/* pricing: cada tarjeta entra desde abajo al llegar a pantalla */
+.js:not(.reduce) .price-card { opacity: 0; }
+.js:not(.reduce) .price-card.is-in { animation: priceCardRise .9s var(--ease) both; }
+@media (min-width: 600px) {
+  .js:not(.reduce) .price-card:nth-child(2).is-in { animation-delay: .16s; }
+}
+.js:not(.reduce) .price-card:focus-within { opacity: 1; animation: none; }
+@keyframes priceCardRise {
+  from { opacity: 0; transform: translateY(96px); }
+  to { opacity: 1; transform: none; }
+}
+
 /* editor y pasos (los mueve el JS) */
 .product__editor, .step { will-change: transform; }
 /* cards de migración: entran solas al dispararse (no siguen al scroll) */
