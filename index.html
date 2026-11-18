@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Metalens — A CMS for a more human web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mako&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    /* unidad de escala: 1u = 1px del diseño 1440. Desktop crece con el ancho (siempre ocupa todo el ancho).
+       Debajo de 1024 el layout compacto usa px reales (u = 1px). */
+    (function () {
+      var r = document.documentElement;
+      function setU() {
+        var w = r.clientWidth, h = window.innerHeight;
+        var u = w >= 1024 ? w / 1440 : 1;   // solo el ancho manda: margen chico de borde a borde, como el diseño
+        r.style.setProperty('--u', u + 'px');
+      }
+      setU();
+      addEventListener('resize', setU);
+      if (window.ResizeObserver) new ResizeObserver(setU).observe(r);
+    })();
+  </script>
+</head>
+<body>
+
+
+  <!-- 1 · HERO -->
+  <header class="hero">
+    <nav class="nav">
+      <a href="#" class="nav__logo" aria-label="Metalens"><img src="assets/logo.svg" alt="Metalens" width="212" height="24" /></a>
+      <div class="nav__links">
+        <a href="#product">Product</a>
+        <a href="#migration">Free migration</a>
+        <a href="#demo" class="btn btn--lime">Book a demo</a>
+      </div>
+    </nav>
+
+    <img class="hero__sparkle" src="assets/sparkle.svg" alt="" width="40" height="44" />
+    <p class="hero__kicker">A CMS FOR A<br />MORE HUMAN WEB</p>
+
+    <h1 class="hero__title">
+      <span class="hero__make">Make</span>
+      <img class="hero__br hero__br--l" src="assets/bracket-l.svg" alt="" />
+      <span class="hero__every">every</span>
+      <img class="hero__br hero__br--r" src="assets/bracket-r.svg" alt="" />
+      <span class="hero__line2">visit mean more</span>
+    </h1>
+  </header>
+
+  <!-- 2 · INTRO -->
+  <section class="intro" id="intro">
+    <div class="tag">
+      <img src="assets/tag-l.svg" alt="" />
+      <p>Built for marketing,<br />careers and content teams.</p>
+      <img src="assets/tag-r.svg" alt="" />
+    </div>
+    <p class="intro__text">
+      <span class="dim">Bring your ideas to life on a website that</span>
+      <span class="hl">speaks to each audience.</span>
+      <span class="dim">Metalens puts editing, personalization and publishing in your team's hands.</span>
+    </p>
+  </section>
+
+  <!-- 3 · PERSON -->
+  <section class="person">
+    <div class="person__left">
+      <p class="label-mako">Created by you.<br />Experienced by people.</p>
+      <h2 class="display-80">There’s a person<br />behind every visit</h2>
+    </div>
+    <div class="person__right">
+      <img src="assets/star-dark.svg" alt="" width="40" height="40" />
+      <div class="person__copy">
+        <p>A future teammate. A customer with a question. Someone ready for their next step.</p>
+        <p>Give each audience a way forward that feels relevant to them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · PRODUCT -->
+  <section class="product" id="product">
+    <div class="product__pin">
+      <div class="product__stage">
+        <img class="product__editor" src="assets/editor@2x.png" alt="Metalens editor" width="1306" height="713" />
+      </div>
+      <div class="product__tabs" role="tablist">
+        <button class="ptab ptab--lime is-on" role="tab" data-step="0">
+          <span class="ptab__num">01</span>
+          <span class="ptab__txt">Move Forward. <br />Stay In Control.</span>
+          <i class="ptab__dot"></i>
+        </button>
+        <button class="ptab ptab--sky" role="tab" data-step="1">
+          <span class="ptab__num">02</span>
+          <span class="ptab__txt">One Site. <br />Different Audiences.</span>
+          <i class="ptab__dot"></i>
+        </button>
+        <button class="ptab ptab--dark" role="tab" data-step="2">
+          <span class="ptab__num">03</span>
+          <span class="ptab__txt">See It, <br />Change It.</span>
+          <i class="ptab__dot"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · MIGRATION -->
+  <section class="migration" id="migration">
+    <h2 class="display-166">Make room for<br /><span class="kw">what's</span> next</h2>
+    <p class="migration__lead">Focus on what you want to create next. Bring your site to Metalens with a free migration, with scope and timing agreed together.</p>
+
+    <div class="steps">
+      <div class="steps__pin">
+        <article class="step step--1">
+          <div class="step__head"><span class="step__num">01</span><h3>Show us<br />your site.</h3></div>
+          <i class="step__plus"></i>
+          <p class="step__body">Walk us through your content and how your team works.</p>
+        </article>
+        <article class="step step--2">
+          <div class="step__head"><span class="step__num">02</span><h3>Plan the<br />move together.</h3></div>
+          <i class="step__plus"></i>
+          <p class="step__body">Agree on the migration scope, timing and subscription.</p>
+        </article>
+        <article class="step step--3">
+          <div class="step__head"><span class="step__num">03</span><h3>Make yourself<br />at home.</h3></div>
+          <i class="step__plus"></i>
+          <p class="step__body">Review your site in Metalens and start working with your content.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · FAQ -->
+  <section class="faq">
+    <div class="faq__left">
+      <h2 class="display-80">A clear path<br />from here</h2>
+      <p class="label-supreme">Before you take<br />the next step</p>
+    </div>
+    <div class="faq__list">
+      <details class="qa" open>
+        <summary><span class="qa__num">01</span><span class="qa__q">Do I Need A Developer To Update Content?</span><i class="qa__plus"></i></summary>
+        <p class="qa__a">A future teammate. A customer with a question. Someone ready for their next step. Give each audience a way forward that feels relevant to them.</p>
+      </details>
+      <details class="qa">
+        <summary><span class="qa__num">02</span><span class="qa__q">Do I Need A Developer To Update Content?</span><i class="qa__plus"></i></summary>
+        <p class="qa__a">A future teammate. A customer with a question. Someone ready for their next step. Give each audience a way forward that feels relevant to them.</p>
+      </details>
+      <details class="qa">
+        <summary><span class="qa__num">03</span><span class="qa__q">Do I Need A Developer To Update Content?</span><i class="qa__plus"></i></summary>
+        <p class="qa__a">A future teammate. A customer with a question. Someone ready for their next step. Give each audience a way forward that feels relevant to them.</p>
+      </details>
+      <details class="qa">
+        <summary><span class="qa__num">04</span><span class="qa__q">Do I Need A Developer To Update Content?</span><i class="qa__plus"></i></summary>
+        <p class="qa__a">A future teammate. A customer with a question. Someone ready for their next step. Give each audience a way forward that feels relevant to them.</p>
+      </details>
+      <details class="qa">
+        <summary><span class="qa__num">05</span><span class="qa__q">Do I Need A Developer To Update Content?</span><i class="qa__plus"></i></summary>
+        <p class="qa__a">A future teammate. A customer with a question. Someone ready for their next step. Give each audience a way forward that feels relevant to them.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 7 · DEMO + FOOTER -->
+  <footer class="demo" id="demo">
+    <div class="demo__top">
+      <div class="demo__left">
+        <h2 class="demo__title">Book a demo</h2>
+        <div class="demo__note">
+          <img src="assets/star-light.svg" alt="" width="40" height="40" />
+          <p>Tell us about your site, your team<br />and the people you want to reach.<br />We’ll take it from there.</p>
+        </div>
+      </div>
+      <form class="form" onsubmit="event.preventDefault()">
+        <p class="form__title">Every site starts with a conversation.</p>
+        <label class="field"><i></i><input type="text" name="name" placeholder="Name" /></label>
+        <label class="field"><i></i><input type="email" name="email" placeholder="Work email" /></label>
+        <label class="field"><i></i><input type="url" name="website" placeholder="Company website" /></label>
+        <label class="field field--opt"><i></i><input type="text" name="message" placeholder="Message" /><small>(optional)</small></label>
+        <button type="submit" class="btn btn--dark">Get in touch</button>
+      </form>
+    </div>
+
+    <hr class="demo__rule" />
+
+    <div class="cols">
+      <div class="col">
+        <p class="col__label">Created with love at</p>
+        <a href="https://aerolab.co" class="col__aerolab"><img src="assets/aerolab.svg" alt="Aerolab" width="78" height="16" /></a>
+      </div>
+      <div class="col">
+        <p class="col__label">Contact</p>
+        <a href="mailto:hello@metalens.com">hello@metalens.com</a>
+      </div>
+      <div class="col">
+        <p class="col__label">Product</p>
+        <a href="#product">Explore the editor</a>
+        <a href="#migration">Free migration</a>
+      </div>
+    </div>
+
+    <div class="demo__logo-mask">
+      <svg class="demo__logo" viewBox="0 0 1392 162" fill="none" role="img" aria-label="Metalens">
+        <g class="ch" style="--i:0"><path d="M166.23 24.0181C172.599 24.0181 177.643 25.9877 181.377 29.9427C185.103 33.8898 186.97 39.4157 186.97 46.5204L186.97 116.636C186.97 123.741 185.071 129.267 181.259 133.214C177.455 137.161 172.442 139.13 166.23 139.13L144.564 139.13L144.564 161.401L165.767 161.401C171.517 161.401 176.176 160.612 179.745 159.033C183.322 157.454 187.048 154.687 190.931 150.74L202.344 138.66C205.764 135.024 207.976 131.436 208.988 127.887C210 124.331 210.502 119.323 210.502 112.848L210.502 50.0688C210.502 43.7535 210 38.8176 208.988 35.2692C207.976 31.7129 205.764 28.1246 202.344 24.4965L190.931 12.4161C187.048 8.30954 183.361 5.50273 179.863 4.01161C176.364 2.51252 171.674 1.76297 165.767 1.76297L144.564 1.76296L144.564 24.0261L166.23 24.0261L166.23 24.0181Z" fill="#C9DAFE"/><path d="M44.2722 137.383C37.9027 137.383 32.859 135.414 29.1252 131.459C25.3992 127.512 23.5323 121.986 23.5323 114.881L23.5323 44.7654C23.5323 37.6607 25.4306 32.1347 29.2428 28.1877C33.0472 24.2406 38.0596 22.2711 44.2722 22.2711H65.9376V0L44.735 0C38.9852 0 34.3258 0.789414 30.7568 2.36824C27.1798 3.94707 23.4539 6.71401 19.5711 10.6611L8.15788 22.7415C4.73784 26.3776 2.5258 29.9659 1.51391 33.5142C0.502023 37.0706 0 42.0782 0 48.553L1.81985e-06 111.333C1.81985e-06 117.648 0.502025 122.584 1.51392 126.132C2.52581 129.688 4.73784 133.277 8.15788 136.905L19.5711 148.985C23.4539 153.092 27.1406 155.899 30.6391 157.39C34.1376 158.889 38.8284 159.638 44.735 159.638H65.9376V137.375H44.2722V137.383Z" fill="#C9DAFE"/><path d="M153.705 74.4047L117.511 73.5683C112.406 73.5683 108.268 68.5982 108.268 62.4667L107.572 18.9932L99.5917 18.9932L98.8953 62.4667C98.8953 68.5982 94.7574 73.5683 89.6527 73.5683L53.4585 74.4047V83.5036L89.6527 84.34C94.7574 84.34 98.8953 89.3101 98.8953 95.4415L99.5917 138.915H107.572L108.268 95.4415C108.268 89.3101 112.406 84.34 117.511 84.34L153.705 83.5036V74.4047Z" fill="#C9DAFE"/></g>
+        <g class="ch" style="--i:1"><path d="M259.845 33.2158C261.074 29.527 263.534 25.6891 267.222 21.6948L278.744 9.71171C282.276 6.0229 285.734 3.48917 289.117 2.10308C292.493 0.716976 296.8 0.0313795 302.024 0.0313795H321.154C326.989 0.0313795 331.64 0.798951 335.098 2.33409C338.555 3.86923 341.894 6.64143 345.121 10.6283L354.801 22.3804L364.02 10.6283C367.09 6.79047 370.473 4.05554 374.162 2.44587C377.851 0.83621 382.457 0.0239258 387.994 0.0239258H407.123C412.504 0.0239258 416.841 0.716977 420.15 2.09562C423.451 3.48172 426.872 6.01545 430.404 9.70426L441.933 21.6873C445.622 25.6817 448.044 29.527 449.191 33.2083C450.346 36.8971 450.92 41.8156 450.92 47.9561V161.363H427.64V44.2748C427.64 37.3592 425.799 31.8669 422.11 27.7981C418.421 23.7292 413.585 21.6873 407.585 21.6873H385.922C379.312 21.6873 374.356 23.61 371.055 27.4478C367.746 31.2931 366.099 36.7481 366.099 43.8127V161.363H342.818V43.8202C342.818 36.7556 341.164 31.3006 337.862 27.4553C334.553 23.6174 329.68 21.6948 323.226 21.6948H301.562C295.571 21.6948 290.69 23.7665 286.926 27.9173C283.155 32.0681 281.277 37.5231 281.277 44.2822V161.37H257.997V47.9636C257.997 41.8156 258.608 36.8971 259.837 33.2158H259.845Z" fill="#C9DAFE"/></g>
+        <g class="ch" style="--i:2"><path d="M509.118 159.418C505.504 158.114 501.629 155.617 497.478 151.928L487.335 142.479C483.795 139.409 481.344 136.137 479.957 132.68C478.571 129.222 477.886 125.19 477.886 120.577V40.8244C477.886 36.2115 478.616 32.1799 480.077 28.7221C481.537 25.2643 483.959 21.9258 487.335 18.6915L497.478 9.47324C501.472 5.78443 505.273 3.28797 508.887 1.98384C512.494 0.679715 516.988 0.0239258 522.368 0.0239258H587.829V21.6873H520.296C514.148 21.6873 509.386 23.2672 506.003 26.412C502.62 29.5642 500.936 33.7523 500.936 38.9763V57.8749C500.936 61.8693 501.666 64.5968 503.126 66.0574C504.587 67.518 507.158 68.2483 510.847 68.2483H579.765V88.302H510.847C507.158 88.302 504.624 88.9951 503.238 90.3737C501.852 91.7598 501.167 94.5246 501.167 98.668V121.948C501.167 127.478 502.97 131.785 506.584 134.856C510.191 137.933 515.229 139.468 521.683 139.468H587.836V161.363H522.607C517.226 161.363 512.732 160.707 509.126 159.403L509.118 159.418Z" fill="#C9DAFE"/></g>
+        <g class="ch" style="--i:3"><path d="M648.118 24.7949C645.733 22.7232 642.007 21.6873 636.939 21.6873H599.365V0.0239258H726.597V21.6873H689.023C683.956 21.6873 680.222 22.7232 677.845 24.7949C675.46 26.8666 674.275 30.0635 674.275 34.3634V161.363H651.687V34.356C651.687 30.0561 650.495 26.8666 648.118 24.7874V24.7949Z" fill="#C9DAFE"/></g>
+        <g class="ch" style="--i:4"><path d="M743.28 32.6345C744.278 29.1767 746.469 25.6817 749.853 22.1493L761.15 10.3973C764.988 6.55946 768.677 3.86923 772.217 2.32664C775.749 0.791497 780.362 0.0239258 786.048 0.0239258H819.471C825.307 0.0239258 829.957 0.754238 833.415 2.21486C836.873 3.67548 840.442 6.40296 844.131 10.3973L855.66 22.1493C859.035 25.5326 861.189 28.9904 862.113 32.5227C863.037 36.0625 863.499 40.9735 863.499 47.2705V161.363H840.45V122.873C840.45 119.184 839.451 116.344 837.454 114.347C835.457 112.35 832.61 111.352 828.928 111.352H776.606C772.917 111.352 770.071 112.35 768.081 114.347C766.084 116.344 765.085 119.191 765.085 122.873V161.363H741.804V47.278C741.804 40.9809 742.304 36.0998 743.302 32.642L743.28 32.6345ZM837.439 88.302C839.436 86.3049 840.435 83.4581 840.435 79.7768V43.5892C840.435 36.6736 838.512 31.3006 834.674 27.4553C830.829 23.6174 825.836 21.6948 819.695 21.6948H785.579C779.431 21.6948 774.475 23.6174 770.711 27.4553C766.948 31.3006 765.063 36.6736 765.063 43.5892V79.7768C765.063 83.4656 766.061 86.3123 768.058 88.302C770.056 90.2992 772.902 91.2978 776.584 91.2978H828.906C832.595 91.2978 835.434 90.2992 837.431 88.302H837.439Z" fill="#C9DAFE"/></g>
+        <g class="ch" style="--i:5"><path d="M923.353 159.291C919.582 157.905 915.55 155.14 911.25 150.997L900.877 141.086C897.188 137.553 894.654 133.976 893.268 130.369C891.882 126.763 891.196 122.418 891.196 117.343V0.0239258H914.477V119.191C914.477 125.339 916.437 130.295 920.357 134.058C924.277 137.829 929.613 139.707 936.379 139.707H985.244V161.37H938.682C932.228 161.37 927.116 160.677 923.353 159.299V159.291Z" fill="#C9DAFE"/></g>
+        <g class="ch" style="--i:6"><path d="M1034.16 159.418C1030.55 158.114 1026.67 155.617 1022.52 151.928L1012.38 142.479C1008.84 139.409 1006.39 136.137 1005 132.68C1003.62 129.222 1002.93 125.19 1002.93 120.577V40.8244C1002.93 36.2115 1003.66 32.1799 1005.12 28.7221C1006.58 25.2643 1009 21.9258 1012.38 18.6915L1022.52 9.47324C1026.52 5.78443 1030.32 3.28797 1033.93 1.98384C1037.54 0.679715 1042.03 0.0239258 1047.41 0.0239258H1112.87V21.6873H1045.34C1039.19 21.6873 1034.43 23.2672 1031.05 26.412C1027.66 29.5642 1025.98 33.7523 1025.98 38.9763V57.8749C1025.98 61.8693 1026.71 64.5968 1028.17 66.0574C1029.63 67.518 1032.2 68.2483 1035.89 68.2483H1104.81V88.302H1035.89C1032.2 88.302 1029.67 88.9951 1028.28 90.3737C1026.9 91.7598 1026.21 94.5246 1026.21 98.668V121.948C1026.21 127.478 1028.01 131.785 1031.63 134.856C1035.24 137.933 1040.27 139.468 1046.73 139.468H1112.88V161.363H1047.65C1042.27 161.363 1037.78 160.707 1034.17 159.403L1034.16 159.418Z" fill="#C9DAFE"/></g>
+        <g class="ch" style="--i:7"><path d="M1135.72 0.0239258H1212.48C1218.01 0.0239258 1222.43 0.679715 1225.73 1.98384C1229.03 3.28797 1232.3 5.86641 1235.53 9.70426L1247.74 23.9975C1251.12 27.9918 1253.39 31.5689 1254.54 34.7137C1255.7 37.8659 1256.27 42.285 1256.27 47.971V161.378H1232.99V44.2748C1232.99 37.5157 1231.1 32.0607 1227.34 27.9099C1223.57 23.759 1218.69 21.6873 1212.7 21.6873H1171.67C1167.06 21.6873 1163.79 22.8424 1161.87 25.1451C1159.95 27.4478 1158.99 31.2186 1158.99 36.4426V161.37H1135.71V0.0239258H1135.72Z" fill="#C9DAFE"/></g>
+        <g class="ch" style="--i:8"><path d="M1276.53 139.699H1355.13C1359.74 139.699 1363.08 138.701 1365.15 136.704C1367.22 134.707 1368.26 131.554 1368.26 127.254V111.814C1368.26 108.438 1367.57 105.673 1366.19 103.519C1364.81 101.373 1362.58 99.6815 1359.51 98.4519L1287.13 70.5585C1283.29 69.0233 1280.57 67.1379 1278.95 64.9098C1277.33 62.6816 1276.53 59.7231 1276.53 56.0342V35.2875C1276.53 31.2931 1277.1 27.9918 1278.26 25.3761C1279.41 22.7679 1281.37 20.0031 1284.14 17.0819L1292.43 8.32561C1295.2 5.40437 1298.08 3.29542 1301.08 1.98384C1304.07 0.679715 1307.8 0.0239258 1312.25 0.0239258H1389.7V21.6873H1312.48C1308.63 21.6873 1305.64 22.6859 1303.49 24.6831C1301.34 26.6803 1300.26 29.676 1300.26 33.6704V46.5775C1300.26 48.8802 1300.84 50.7283 1301.99 52.107C1303.15 53.4856 1305.02 54.6407 1307.64 55.5648L1381.86 84.1437C1385.55 85.6789 1388.15 87.6835 1389.7 90.1353C1391.23 92.5945 1392 95.9777 1392 100.278V125.168C1392 129.475 1391.46 132.97 1390.38 135.653C1389.31 138.343 1387.31 141.227 1384.39 144.297L1376.1 153.054C1373.33 156.131 1370.45 158.278 1367.45 159.507C1364.46 160.737 1360.42 161.348 1355.35 161.348H1276.52V139.685L1276.53 139.699Z" fill="#C9DAFE"/></g>
+      </svg>
+    </div>
+  </footer>
+
+
+  <script src="animations.js"></script>
+</body>
+</html>
