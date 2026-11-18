@@ -174,7 +174,7 @@ section, header, footer { position: relative; width: calc(1440 * var(--u)); marg
 .qa__a { padding: calc(26 * var(--u)) 0 0 calc(60 * var(--u)); max-width: calc(783 * var(--u)); font: 400 calc(22 * var(--u))/1.1 var(--sans); color: var(--text); }
 
 /* ───────────── 7 · Demo + footer ───────────── */
-.demo { background: var(--wine); color: #fff; padding: calc(100 * var(--u)) var(--pad) calc(24 * var(--u)); }
+.demo { background: var(--ink); color: #fff; padding: calc(100 * var(--u)) var(--pad) calc(24 * var(--u)); }
 .demo__top { display: grid; grid-template-columns: calc(673 * var(--u)) calc(687 * var(--u)); gap: calc(32 * var(--u)); height: calc(411 * var(--u)); }
 .demo__left { position: relative; }
 .demo__title { margin-top: calc(-18 * var(--u)); width: calc(581 * var(--u)); font: 500 calc(166 * var(--u))/calc(140 * var(--u)) var(--display); text-transform: uppercase; color: var(--wine-2); }
@@ -232,11 +232,19 @@ section, header, footer { position: relative; width: calc(1440 * var(--u)); marg
 .hero__title > span { overflow: hidden; }
 .rise { display: inline-block; }
 .js:not(.reduce) .rise { transform: translateY(100%); transition: transform 1.2s var(--ease); transition-delay: calc(200ms + var(--i) * 140ms); }
-.js:not(.reduce) .hero__br { opacity: 0; transition: transform 1.1s var(--ease) .75s, opacity .6s ease .75s; }
-.js:not(.reduce) .hero__br--l { transform: translateX(calc(260 * var(--u))); }
-.js:not(.reduce) .hero__br--r { transform: translateX(calc(-260 * var(--u))); }
+/* "fill the gap": los corchetes aparecen cerrados en el centro del hueco, se abren,
+   el hueco queda vacío un instante y las letras de EVERY lo llenan desde el centro.
+   --close-l / --close-r los mide el JS (sirven en todos los breakpoints). */
+.js:not(.reduce) .hero__br { opacity: 0; scale: 1 0; transition: transform .9s var(--ease) .5s, scale .55s var(--ease) .05s, opacity .35s ease .05s; }   /* crecen de alto (cerrados) y recién después se abren */
+.js:not(.reduce) .hero__br--l { transform: translateX(var(--close-l, 0px)); }
+.js:not(.reduce) .hero__br--r { transform: translateX(var(--close-r, 0px)); }
+.js:not(.reduce) .hero__every .rise { transform: none; }
+.hero__every .lt { display: inline-block; }
+.js:not(.reduce) .hero__every .lt { transform: translateY(105%); transition: transform .85s var(--ease); transition-delay: calc(1s + var(--d) * 80ms); }
+.loaded .hero__every .lt { transform: none !important; }
 .js:not(.reduce) .nav, .js:not(.reduce) .hero__kicker, .js:not(.reduce) .hero__sparkle { opacity: 0; transition: opacity 1s ease .9s; }
 .loaded .rise, .loaded .hero__br { transform: none !important; opacity: 1 !important; }
+.loaded .hero__br { scale: 1 !important; }
 .loaded .nav, .loaded .hero__kicker, .loaded .hero__sparkle { opacity: 1 !important; }
 
 /* intro: palabras */
@@ -261,7 +269,7 @@ section, header, footer { position: relative; width: calc(1440 * var(--u)); marg
    El contenido queda en 1440 centrado; los fondos se estiran hasta el borde de la ventana. */
 html, body { overflow-x: clip; }
 .hero, .intro { --bleed: var(--ink); }
-.demo { --bleed: var(--wine); }
+.demo { --bleed: var(--ink); }
 .product__stage { --bleed: var(--sky); }
 /* border-image con outset: un solo relleno que cubre el bloque y los costados, sin costuras */
 .hero, .intro, .demo, .product__stage { border-image: conic-gradient(var(--bleed) 0 0) fill 0 / / 0 100vmax; }
@@ -295,8 +303,6 @@ html, body { overflow-x: clip; }
   .hero__make { margin-right: .24em; }
   .hero__line2 { flex-basis: 100%; }
   .hero__br { position: static; width: auto; height: 1.02em; }
-  .js:not(.reduce) .hero__br--l { transform: translateX(.6em); }
-  .js:not(.reduce) .hero__br--r { transform: translateX(-.6em); }
 
   /* 2 · Intro */
   .intro { height: auto; padding: 72px var(--pad); }

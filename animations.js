@@ -23,6 +23,19 @@
   $$('.hero__title > span').forEach((el, i) => {
     el.innerHTML = `<span class="rise" style="--i:${i}">${el.textContent}</span>`;
   });
+  /* EVERY: letra por letra, de la primera a la última (fill the gap) */
+  const every = $('.hero__every .rise');
+  every.innerHTML = [...every.textContent].map((c, i) => `<span class="lt" style="--d:${i}">${c}</span>`).join('');
+  /* corchetes: cuánto correr cada uno para que arranquen cerrados en el centro del hueco */
+  function closeBrackets() {
+    const l = $('.hero__br--l'), r = $('.hero__br--r');
+    const lEdge = l.offsetLeft + l.offsetWidth, c = (lEdge + r.offsetLeft) / 2;   // offset* ignora transforms
+    [l, r].forEach(el => (el.style.transition = 'none'));   // saltar directo a "cerrados", sin animar ese paso
+    l.style.setProperty('--close-l', (c - lEdge) + 'px');
+    r.style.setProperty('--close-r', (c - r.offsetLeft) + 'px');
+    l.offsetWidth;   // fija el estado cerrado antes de devolver la transición
+    [l, r].forEach(el => el.style.removeProperty('transition'));
+  }
 
   /* ── 2. Intro: palabras que se encienden con el scroll ── */
   const intro = $('.intro__text');
@@ -47,7 +60,10 @@
   }
 
   /* Hero arranca al cargar las fuentes */
-  document.fonts.ready.then(() => requestAnimationFrame(() => document.body.classList.add('loaded')));
+  document.fonts.ready.then(() => {
+    closeBrackets();
+    requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('loaded')));
+  });
 
   /* ── 4. Animaciones ligadas al scroll ── */
   const editor = $('.product__editor');
