@@ -31,7 +31,10 @@
   <header class="hero">
     <nav class="nav">
       <a href="#" class="nav__logo" aria-label="Metalens"><img src="assets/logo.svg" alt="Metalens" width="212" height="24" /></a>
-      <div class="nav__links">
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-controls="main-navigation" aria-expanded="false">
+        <img src="assets/menu.svg" alt="" width="24" height="24" />
+      </button>
+      <div class="nav__links" id="main-navigation">
         <a href="#product">Product</a>
         <a href="#migration">Free migration</a>
         <a href="#demo" class="btn btn--lime">Book a demo</a>
@@ -46,7 +49,7 @@
       <img class="hero__br hero__br--l" src="assets/bracket-l.svg" alt="" />
       <span class="hero__every">every</span>
       <img class="hero__br hero__br--r" src="assets/bracket-r.svg" alt="" />
-      <span class="hero__line2">visit mean more</span>
+      <span class="hero__line2">visit<br class="hero__mobile-break" /> mean more</span>
     </h1>
   </header>
 
@@ -54,7 +57,7 @@
   <section class="intro" id="intro">
     <div class="tag">
       <img src="assets/tag-l.svg" alt="" />
-      <p>Built for marketing,<br />careers and content teams.</p>
+      <p>Built for marketing,<br /> careers and content teams.</p>
       <img src="assets/tag-r.svg" alt="" />
     </div>
     <p class="intro__text">
@@ -67,7 +70,7 @@
   <!-- 3 · PERSON -->
   <section class="person">
     <div class="person__left">
-      <p class="label-mako">Created by you.<br />Experienced by people.</p>
+      <p class="label-mako">Created by you.<br /> Experienced by people.</p>
       <h2 class="display-80">There’s a person<br />behind every visit</h2>
     </div>
     <div class="person__right">
@@ -113,17 +116,17 @@
     <div class="steps">
       <div class="steps__pin">
         <article class="step step--1">
-          <div class="step__head"><span class="step__num">01</span><h3>Show us<br />your site.</h3></div>
+          <div class="step__head"><span class="step__num">01</span><h3>Show us<br /> your site.</h3></div>
           <i class="step__plus"></i>
           <p class="step__body">Walk us through your content and how your team works.</p>
         </article>
         <article class="step step--2">
-          <div class="step__head"><span class="step__num">02</span><h3>Plan the<br />move together.</h3></div>
+          <div class="step__head"><span class="step__num">02</span><h3>Plan the<br /> move together.</h3></div>
           <i class="step__plus"></i>
           <p class="step__body">Agree on the migration scope, timing and subscription.</p>
         </article>
         <article class="step step--3">
-          <div class="step__head"><span class="step__num">03</span><h3>Make yourself<br />at home.</h3></div>
+          <div class="step__head"><span class="step__num">03</span><h3>Make yourself<br /> at home.</h3></div>
           <i class="step__plus"></i>
           <p class="step__body">Review your site in Metalens and start working with your content.</p>
         </article>
@@ -135,7 +138,7 @@
   <section class="pricing" id="pricing" aria-labelledby="pricing-title">
     <div class="pricing__intro">
       <p class="label-mako">Pricing</p>
-      <h2 class="pricing__title" id="pricing-title">The right fit for<br />your content.</h2>
+      <h2 class="pricing__title" id="pricing-title">The right fit for<br /> your content.</h2>
       <p class="pricing__lead label-supreme">Choose a plan that works for your team. Create, manage, and publish with more freedom, less complexity, and full control over your digital presence.</p>
     </div>
 
@@ -182,7 +185,7 @@
   <section class="faq" id="faq" aria-labelledby="faq-title">
     <div class="faq__left">
       <h2 class="display-80" id="faq-title">A clear path<br />from here</h2>
-      <p class="label-supreme">Before you take<br />the next step</p>
+      <p class="label-supreme">Before you take<br /> the next step</p>
     </div>
     <div class="faq__list">
       <details class="qa" open>
@@ -211,7 +214,7 @@
         <h2 class="demo__title">Book a demo</h2>
         <div class="demo__note">
           <img src="assets/star-light.svg" alt="" width="40" height="40" />
-          <p>Tell us about your site, your team<br />and the people you want to reach.<br />We’ll take it from there.</p>
+          <p>Tell us about your site, your team<br /> and the people you want to reach.<br /> We’ll take it from there.</p>
         </div>
       </div>
       <form class="form" onsubmit="event.preventDefault()">
