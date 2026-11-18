@@ -10,19 +10,46 @@
   document.documentElement.classList.add('js');
   if (reduce) document.documentElement.classList.add('reduce');
 
-  /* ── 1. Títulos: partir en líneas con máscara ── */
-  $$('.display-166, .display-80, .demo__title').forEach(el => {
-    el.innerHTML = el.innerHTML
-      .split(/<br\s*\/?>/i)
-      .map((t, i) => `<span class="line"><span style="--i:${i}">${t.trim()}</span></span>`)
-      .join('');
-    el.setAttribute('data-reveal', '');
-  });
+  /* ── 1. Títulos: máscaras por línea en desktop; texto fluido en mobile ── */
+  const mobileTitles = matchMedia('(max-width: 599px)');
+  const titles = $$('.display-166, .display-80, .demo__title').map(el => ({
+    el,
+    lines: el.innerHTML.split(/<br\s*\/?>/i).map(line => line.trim())
+  }));
+  function wrapTitles() {
+    titles.forEach(({ el, lines }) => {
+      const parts = mobileTitles.matches ? [lines.join(' ')] : lines;
+      el.innerHTML = parts
+        .map((text, i) => `<span class="line"><span style="--i:${i}">${text}</span></span>`)
+        .join(' ');
+      el.setAttribute('data-reveal', '');
+    });
+  }
+  wrapTitles();
+  mobileTitles.addEventListener('change', wrapTitles);
 
   /* Hero: cada span absoluto se vuelve máscara */
   $$('.hero__title > span').forEach((el, i) => {
-    el.innerHTML = `<span class="rise" style="--i:${i}">${el.textContent}</span>`;
+    el.innerHTML = `<span class="rise" style="--i:${i}">${el.innerHTML}</span>`;
   });
+  const nav = $('.nav'), menuToggle = $('.nav__toggle');
+  function setMenuOpen(open) {
+    nav.classList.toggle('is-open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  menuToggle.addEventListener('click', () => setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true'));
+  $$('.nav__links a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+      setMenuOpen(false);
+      menuToggle.focus();
+    }
+  });
+  document.addEventListener('click', event => {
+    if (!nav.contains(event.target)) setMenuOpen(false);
+  });
+  mobileTitles.addEventListener('change', () => setMenuOpen(false));
   /* EVERY: letra por letra, de la primera a la última (fill the gap) */
   const every = $('.hero__every .rise');
   every.innerHTML = [...every.textContent].map((c, i) => `<span class="lt" style="--d:${i}">${c}</span>`).join('');
@@ -57,6 +84,7 @@
     const io = new IntersectionObserver(reveal, { rootMargin: '0px 0px -12% 0px' });
     const ioEdge = new IntersectionObserver(reveal, { rootMargin: '0px' });   // lo que vive pegado al fondo de la página
     $$('[data-reveal]').forEach(el => (el.matches('.demo__logo-mask') ? ioEdge : io).observe(el));
+    $$('.price-card').forEach(el => io.observe(el));
   }
 
   /* Hero arranca al cargar las fuentes */
